@@ -152,9 +152,9 @@ class PerformanceMetrics:
             return Decimal(str(value)).quantize(Decimal(str(precision)))
         step = Decimal("1")
         if Decimal("10000") > abs(value) > Decimal("100"):
-            step = Decimal("0.1")
+            step = Decimal("0.0001")
         elif Decimal("100") > abs(value) > Decimal("1"):
-            step = Decimal("0.01")
+            step = Decimal("0.0001")
         elif Decimal("1") > abs(value) > Decimal("0.01"):
             step = Decimal("0.0001")
         elif Decimal("0.01") > abs(value) > Decimal("0.0001"):
