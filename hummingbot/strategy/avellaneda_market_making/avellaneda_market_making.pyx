@@ -453,7 +453,7 @@ cdef class AvellanedaMarketMakingStrategy(StrategyBase):
             [f"Current Value ({quote_asset})", round(base_value, 4), round(quote_balance, 4)]
         ]
         if to_show_current_pct:
-            data.append(["Current %", f"{base_ratio:.1%}", f"{quote_ratio:.1%}"])
+            data.append(["Current %", f"{base_ratio:.3%}", f"{quote_ratio:.3%}"])
         df = pd.DataFrame(data=data)
         return df
 
@@ -727,7 +727,7 @@ cdef class AvellanedaMarketMakingStrategy(StrategyBase):
         q = (market.get_balance(self.base_asset) - q_target) / (inventory)
         # Volatility has to be in absolute values (prices) because in calculation of reservation price it's not multiplied by the current price, therefore
         # it can't be a percentage. The result of the multiplication has to be an absolute price value because it's being subtracted from the current price
-        vol = self.get_volatility()
+        vol = self.get_volatility()**2
 
         # order book liquidity - kappa and alpha have to represent absolute values because the second member of the optimal spread equation has to be an absolute price
         # and from the reservation price calculation we know that gamma's unit is not absolute price
