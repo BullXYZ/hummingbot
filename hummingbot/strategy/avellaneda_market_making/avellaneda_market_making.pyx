@@ -453,7 +453,7 @@ cdef class AvellanedaMarketMakingStrategy(StrategyBase):
             [f"Current Value ({quote_asset})", round(base_value, 4), round(quote_balance, 4)]
         ]
         if to_show_current_pct:
-            data.append(["Current %", f"{base_ratio:.1%}", f"{quote_ratio:.1%}"])
+            data.append(["Current %", f"{base_ratio:.3%}", f"{quote_ratio:.3%}"])
         df = pd.DataFrame(data=data)
         return df
 
